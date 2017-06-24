@@ -25,7 +25,7 @@ public class Main {
         final MCP23017GpioProvider provider = new MCP23017GpioProvider(I2CBus.BUS_1, 0x20);
 
         sensorTriggerPin =  gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_A0, "trigger"); // Trigger pin as OUTPUT
-        sensorEchoPin = gpio.provisionDigitalInputPin(provider, MCP23017Pin.GPIO_A1, "echo",PinPullResistance.PULL_DOWN); // Echo pin as INPUT
+        sensorEchoPin = gpio.provisionDigitalInputPin(provider, MCP23017Pin.GPIO_A1, "echo"); // Echo pin as INPUT
 
         while(true){
             try {
