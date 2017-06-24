@@ -27,28 +27,6 @@ public class Main {
         sensorTriggerPin =  gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_A0, "trigger"); // Trigger pin as OUTPUT
         sensorEchoPin = gpio.provisionDigitalInputPin(provider, MCP23017Pin.GPIO_A1, "echo"); // Echo pin as INPUT
 
-        while(true){
-            try {
-                Thread.sleep(1000);
-                sensorTriggerPin.high(); // Make trigger pin HIGH
-                java.util.concurrent.TimeUnit.MICROSECONDS.sleep(10); // Delay for 10 microseconds
-                sensorTriggerPin.low(); //Make trigger pin LOW
-
-                while(sensorEchoPin.isLow()){ //Wait until the ECHO pin gets HIGH
-
-                }
-                long startTime= System.nanoTime(); // Store the surrent time to calculate ECHO pin HIGH time.
-                while(sensorEchoPin.isHigh()){ //Wait until the ECHO pin gets LOW
-
-                }
-                long endTime= System.nanoTime(); // Store the echo pin HIGH end time to calculate ECHO pin HIGH time.
-
-                System.out.println("Distance :"+((((endTime-startTime)/1e3)/2) / 29.1) +" cm"); //Printing out the distance in cm
-                Thread.sleep(1000);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        sensorTriggerPin.high();
     }
 }
