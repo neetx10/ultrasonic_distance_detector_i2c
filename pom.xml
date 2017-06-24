@@ -37,7 +37,6 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>ultrasonic.Main</mainClass>
                         </manifest>
                     </archive>
