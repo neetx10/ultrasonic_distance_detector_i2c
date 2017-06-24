@@ -19,7 +19,7 @@ public class Main {
 
         while(true){
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
                 sensorTriggerPin.high(); // Make trigger pin HIGH
                 java.util.concurrent.TimeUnit.MICROSECONDS.sleep(10); // Delay for 10 microseconds
                 sensorTriggerPin.low(); //Make trigger pin LOW
@@ -34,7 +34,7 @@ public class Main {
                 long endTime= System.nanoTime(); // Store the echo pin HIGH end time to calculate ECHO pin HIGH time.
 
                 System.out.println("Distance :"+((((endTime-startTime)/1e3)/2) / 29.1) +" cm"); //Printing out the distance in cm
-                Thread.sleep(1000);
+                Thread.sleep(500);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
