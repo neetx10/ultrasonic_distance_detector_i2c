@@ -45,9 +45,9 @@ public class Main {
                 double distance = ((((endTime-startTime)/1e3)/2) / 29.1);
                 System.out.println("Distance :"+ distance +" cm"); //Printing out the distance in cm
 
-                /*if(distance<30)  burgerPin.high();
+                if(distance<30)  burgerPin.high();
                 else burgerPin.low();
-                Thread.sleep(500);*/
+                Thread.sleep(500);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
