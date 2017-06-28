@@ -25,8 +25,7 @@ public class Main {
 
         sensorTriggerPin =  gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00); // Trigger pin as OUTPUT
         sensorEchoPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02,PinPullResistance.PULL_DOWN); // Echo pin as INPUT
-        final  GpioPinPwmOutput burgerPin = gpio.provisionPwmOutputPin(provider, MCP23017Pin.GPIO_A0);
-        burgerPin.setPwmRange(100);
+        final  GpioPinDigitalOutput burgerPin = gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_A0,"A0");
         while(true){
             try {
                 Thread.sleep(500);
@@ -46,9 +45,9 @@ public class Main {
                 double distance = ((((endTime-startTime)/1e3)/2) / 29.1);
                 System.out.println("Distance :"+ distance +" cm"); //Printing out the distance in cm
 
-                if(distance<30)  burgerPin.setPwm(100);
-                else burgerPin.setPwm(0);
-                Thread.sleep(500);
+                /*if(distance<30)  burgerPin.high();
+                else burgerPin.low();
+                Thread.sleep(500);*/
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
