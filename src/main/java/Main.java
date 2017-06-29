@@ -28,7 +28,6 @@ public class Main {
         final  GpioPinDigitalOutput burgerPin = gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_A0,PinState.LOW);
         while(true){
             try {
-                Thread.sleep(500);
                 sensorTriggerPin.high(); // Make trigger pin HIGH
                 java.util.concurrent.TimeUnit.MICROSECONDS.sleep(10); // Delay for 10 microseconds
                 sensorTriggerPin.low(); //Make trigger pin LOW
@@ -43,14 +42,14 @@ public class Main {
                 long endTime= System.nanoTime(); // Store the echo pin HIGH end time to calculate ECHO pin HIGH time.
 
                 double distance = ((((endTime-startTime)/1e3)/2) / 29.1);
-                if(distance>=30.0){
+                if(distance>=50.0){
                     burgerPin.low();
                 }
                 else{
                     burgerPin.high();
                 }
                 System.out.println("Distance :"+ distance +" cm"); //Printing out the distance in cm
-                Thread.sleep(500);
+                Thread.sleep(50);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
