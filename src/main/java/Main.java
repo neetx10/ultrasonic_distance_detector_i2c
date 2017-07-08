@@ -21,11 +21,11 @@ public class Main {
     }
     public void run() throws InterruptedException, IOException, I2CFactory.UnsupportedBusNumberException {
 
-        final MCP23017GpioProvider provider = new MCP23017GpioProvider(I2CBus.BUS_1, 0x21);
+        final MCP23017GpioProvider provider = new MCP23017GpioProvider(I2CBus.BUS_1, 0x20);
 
-        sensorTriggerPin =  gpio.provisionDigitalOutputPin(provider,MCP23017Pin.GPIO_A0); // Trigger pin as OUTPUT
-        sensorEchoPin = gpio.provisionDigitalInputPin(provider,MCP23017Pin.GPIO_A1); // Echo pin as INPUT
-        final  GpioPinDigitalOutput burgerPin = gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_B0,PinState.LOW);
+        sensorTriggerPin =  gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00); // Trigger pin as OUTPUT
+        sensorEchoPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02,PinPullResistance.PULL_DOWN); // Echo pin as INPUT
+        final  GpioPinDigitalOutput burgerPin = gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_A0,PinState.LOW);
         while(true){
             try {
                 sensorTriggerPin.high(); // Make trigger pin HIGH
