@@ -23,8 +23,8 @@ public class Main {
 
         final MCP23017GpioProvider provider = new MCP23017GpioProvider(I2CBus.BUS_1, 0x21);
 
-        sensorTriggerPin =  gpio.provisionDigitalOutputPin(MCP23017Pin.GPIO_A0); // Trigger pin as OUTPUT
-        sensorEchoPin = gpio.provisionDigitalInputPin(MCP23017Pin.GPIO_A1); // Echo pin as INPUT
+        sensorTriggerPin =  gpio.provisionDigitalOutputPin(provider,MCP23017Pin.GPIO_A0); // Trigger pin as OUTPUT
+        sensorEchoPin = gpio.provisionDigitalInputPin(provider,MCP23017Pin.GPIO_A1); // Echo pin as INPUT
         final  GpioPinDigitalOutput burgerPin = gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_B0,PinState.LOW);
         while(true){
             try {
