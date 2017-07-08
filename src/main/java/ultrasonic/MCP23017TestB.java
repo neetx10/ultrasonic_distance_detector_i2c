@@ -23,7 +23,7 @@ public class MCP23017TestB {
     }
 
     public void run() throws IOException, I2CFactory.UnsupportedBusNumberException {
-        final MCP23017GpioProvider provider = new MCP23017GpioProvider(I2CBus.BUS_1, 0x20);
+        final MCP23017GpioProvider provider = new MCP23017GpioProvider(I2CBus.BUS_1, 0x21);
         final GpioPinDigitalOutput burgerPin = gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_B0, PinState.HIGH);
         burgerPin.high();
         new Thread(new Runnable() {
