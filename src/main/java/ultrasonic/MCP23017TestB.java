@@ -30,6 +30,7 @@ public class MCP23017TestB {
                 if(event.getState().isHigh()){
                     burgerPin.high();
                 }else burgerPin.low();
+                System.out.println(event.getEdge().getValue());
             }
         });
 
