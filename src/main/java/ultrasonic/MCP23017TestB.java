@@ -24,13 +24,12 @@ public class MCP23017TestB {
     public void run() throws IOException, I2CFactory.UnsupportedBusNumberException {
         final MCP23017GpioProvider provider = new MCP23017GpioProvider(I2CBus.BUS_1, 0x21);
         final GpioPinDigitalOutput burgerPin = gpio.provisionDigitalOutputPin(provider, MCP23017Pin.GPIO_B0, PinState.LOW);
-        GpioPinDigitalInput input = gpio.provisionDigitalInputPin(provider, MCP23017Pin.GPIO_A0);
+        GpioPinDigitalInput input = gpio.provisionDigitalInputPin(RaspiPin.GPIO_07);
         input.addListener(new GpioPinListenerDigital() {
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                 if(event.getState().isHigh()){
                     burgerPin.high();
                 }else burgerPin.low();
-                System.out.println(event.getEdge().getValue());
             }
         });
 
